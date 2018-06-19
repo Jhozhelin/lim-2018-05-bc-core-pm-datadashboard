@@ -1,13 +1,13 @@
-const containerList = document.getElementById("caja3");
+const containerList = document.getElementById("caja3")
 
-pruebaRecepcion.addEventListener("click", () => {
-  for (let i = 0; i < userArray.length; i++) {
+buttonA.addEventListener("click", () => {
+  for (let i = 0; i < userRaw.length; i++) {
     let name = document.createElement('div')
-    name.textContent = userArray[i].name;
-    name.className = 'names';
-    containerList.appendChild(name);
+    name.textContent = userRaw[i].name
+    name.className = 'names'
+    containerList.appendChild(name)
   }
-});
+})
 /*
 const percentforid = () => {
   console.log("lhsjh");
