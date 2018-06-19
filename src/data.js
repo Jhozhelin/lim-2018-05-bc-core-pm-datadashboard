@@ -1,24 +1,51 @@
-/*En este espacio van 4 funciones*/
-// const XHR = new XMLHttpRequest () ;
-// console.log (XHR) ;
+//Guardamos las etiquetas en constantes porsiacaso cambian
+const urlJsonUsers = '../data/cohorts/lim-2018-03-pre-core-pw/users.json'
+const urlJsonProgess = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json'
+const urlJsonCohorts = '../data/cohorts.json'
 
-// XHR.onreadystatechange = function(){
-//     if (XHR.readyState == 4 && XHR. status == 200){
-//         console.log(JSON.parse(XHR.responseText)) ;
+//Creamos variables como arrays vacíos
+let userArray = []
+let usersWithStats = []
 
-//         console.log(XHR.res)
-//        }else{
-//            console.log('Hay un problema en el servidor') ;
-//     }
-// }
-// XHR.open('Get','http://http://127.0.0.1:5500/data/cohot.json') ;
-// XHR.send() ;
-fetch('/data/cohorts.json')
-// fetch('http://http://127.0.0.1:5500/data/cohorts.json')
-.then(function(response){
-    return response.json() ;
-})
-.then(function(data){
-    console.log(typeof data);
-    console.log(data[0].id)
-});
+let progress = new Object;
+let percentObject
+
+//Creamos constantes para traer objetos Json
+const dataBase = () => {
+  fetch(urlJsonUsers)
+    .then(response => response.json())
+    .then(response => {
+      for (i = 0; i < response.length; i++) {
+        userArray.push(response[i]);
+      }
+
+    })
+
+}
+dataBase();
+
+const dataProgress = () => {
+  fetch(urlJsonProgess)
+    .then(response => response.json())
+    .then(response => {
+      percentObject = response
+    })
+}
+dataProgress();
+
+let computeProgress = () => {
+  for (var key in percentObject) {
+    if (percentObject.hasOwnProperty(key)) {
+      getPercent = percentObject[key].intro.percent;
+      progress[key] = getPercent;
+    }
+  }
+
+}
+
+let computeUsersStats = (users, progress, courses) => {
+  usersWithStats.stats;
+
+}
+
+computeUsersStats();
