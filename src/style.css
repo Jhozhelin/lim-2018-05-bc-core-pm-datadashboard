@@ -4,7 +4,7 @@ body {
 }
 
 
-.buttonA{
+.buttonStudents{
     background-color: #56F69A; 
     position: relative;
     border: none;
@@ -19,7 +19,7 @@ body {
     left: auto;
 }
 
-.buttonC{
+.buttonCohorts{
     background-color: #56F69A; 
     position: relative;
     border: none;
@@ -35,7 +35,7 @@ body {
 }
 
 
-.buttonI{
+.buttonInstructors{
     background-color: #56F69A; 
     position: relative;
     border: none;
@@ -59,26 +59,7 @@ body {
     right: 0;
 }
 
-.circulo{
-    position: absolute;
-    background: #FFE521;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    left: 100px;
-    height: 0;
-    top: 80px;
-}
-
-/* #alumnas{
-    po
-} */
-
-
-
-
-
-.caja{
+.boxMenu{
     background-color: #FFE521;
     position: absolute;
     top: 0;
@@ -91,8 +72,20 @@ body {
     
 }
 
+/* .ProfilePicture ( foto del perfil de usuario)
+{
+    position: absolute;
+    background: #FFE521;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    left: 100px;
+    height: 0;
+    top: 80px;
+} */
 
-/* .caja2{
+/*caja de heramientas(contenido)
+ .Toolbox{
     background-color: #56F69A; 
     position: absolute;    
     width: 20%;
@@ -103,7 +96,7 @@ body {
 } */
 
 
-.caja3{
+.boxBody{
     background-color:#F4F6F6;
     position: relative;
     top: -73px;

@@ -17,4 +17,3 @@ const percentforid = () => {
     console.log(percentObject[idPos].intro.percent)
   }
 }*/
-
