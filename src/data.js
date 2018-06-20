@@ -1,48 +1,144 @@
-//Guardamos las etiquetas en constantes porsiacaso cambian
-
-//Creamos variables como arrays vacíos
+//************************************/
+//Creamos variables para el guardar la data en bruto
+//que viene el Json
+//Declaramos los array como tales - []
+//y los objetos - new Object
+//************************************/
 let userRaw = []
 let progressRaw
-let cohortsRaw
+let coursesRaw
 
-let progress = new Object;
+//Variables globales
+let percent = new Object;
 let courses = []
-//Creamos constantes para traer objetos Json
-let computeProgress = () => {
-  for (key in progressRaw){
-    if(progressRaw[key].hasOwnProperty('intro')){
-      getPercent = progressRaw[key].intro.percent
-      progress[key] = getPercent
-    }else{
-      progress[key] = 'No posee datos'
-    }
+let usersWithStats = [];
+//************************************/
+let computeCourses = () => {
+  for (var i = 0; i < coursesRaw.length; i++) {
+    courses.push(coursesRaw[i].id)
   }
 }
 
-let computeCourses = () => {
-  for (i=0; i < cohortsRaw.length; i++){
-    courses.push(cohortsRaw[i].id)
+let getPercent = (quantity, total) => {
+
+  if (quantity === 0){
+    return 0
+  } else {
+    return Math.round((quantity/total)*100)
   }
+}
+
+let getAverage = (score, total) => {
+  return Math.round(score/total)
 }
 
 let computeUsersStats = (users, progress, courses) => {
-  usersWithStats.stats;
+
+  users.map((user) => {
+    idUser = user.id
+
+    numberQuiz = 0
+    completedQuiz = 0
+    percentQuiz = 0
+    scoreSum = 0
+    scoreAvg = 0
+
+    numberRead = 0
+    completedRead = 0
+    percentRead = 0
+
+    numberPractice = 0
+    completedPractice = 0
+    percentPractice = 0
+
+    if(progress[idUser].hasOwnProperty("intro")){
+      percentUser = progress[idUser].intro.percent
+
+      unitsArray = Object.entries(progress[idUser].intro.units)
+      unitsArray.map((units) => {
+        Object.entries(units[1].parts)
+          .map((unit)=> {
+            if(unit[1].type === "read"){
+              numberRead++
+              completedRead+= unit[1].completed
+            } else if (unit[1].type === "quiz"){
+              numberQuiz++
+              completedQuiz+= unit[1].completed
+              if(unit[1].completed === 0){
+                scoreSum+= 0
+              }else{
+                scoreSum += unit[1].score
+              }
+            } else if (unit[1].type === "practice"){
+              numberPractice++
+              completedPractice += unit[1].completed
+            }
+          })
+      })
+
+    }else{
+      percentUser = -1
+    }
+
+    percentRead = getPercent(completedRead, numberRead)
+    percentQuiz = getPercent(completedQuiz, numberQuiz)
+    percentPractice = getPercent(completedPractice, numberPractice)
+    scoreAvg = getAverage(scoreSum, numberQuiz)
+
+
+    stats = {}
+    stats[idUser] = {
+      stats : {
+        percent : percentUser,
+        exercises: {
+          total: numberPractice,
+          completed : completedPractice,
+          percent: percentPractice
+        },
+        reads :{
+          total : numberRead,
+          completed : completedRead,
+          percent : percentRead
+        },
+        quizes:{
+          total: numberQuiz,
+          completed: completedQuiz,
+          percent: percentQuiz,
+          scoreSum : scoreSum,
+          scoreAvg : scoreAvg
+        }
+      }
+    }
+
+    usersWithStats.push(stats)
+  })
 }
 
-//Cargamos los Json
+//************************************/
+// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NESECARIAS
+// SOLO CUANDO TODAS LAS PROMESAS SE HAYAN CUMPLIDO
+//************************************/
 const dataUsers = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
   .then(response => response.json())
-const dataProgess = fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+const dataProgress = fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
   .then(response => response.json())
-const dataCohorts   = fetch('../data/cohorts.json')
+const dataCohorts = fetch('../data/cohorts.json')
   .then(response => response.json())
 
-Promise.all([dataUsers,dataProgess,dataCohorts]).then((data) => {
-  userRaw = data[0] //Guardado el Json users en bruto
-  progressRaw = data[1]
-  cohortsRaw = data[2]
+Promise.all([dataUsers, dataProgress, dataCohorts])
+  .then(
+    (data) => {
+      //Copiamos la data de usuario en bruto
+      userRaw = data[0]
+      //Copiamos todo el progress en bruto
+      progressRaw = data[1]
+      //Copiamos todo los cursos en bruto
+      coursesRaw = data[2]
 
-  computeProgress()
-  computeCourses()
-  }
-)
+      //Procesamos la informacion recaudada en funciones
+      computeCourses()
+
+      //test
+      computeUsersStats(userRaw, progressRaw, courses)
+    }
+  )
