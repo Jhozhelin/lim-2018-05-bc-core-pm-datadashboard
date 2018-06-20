@@ -6,7 +6,7 @@
 //************************************/
 let userRaw = []
 let progressRaw
-let coursesRaw
+let coursesRaw = []
 
 //Variables globales
 let percent = new Object;
@@ -115,7 +115,7 @@ let computeUsersStats = (users, progress, courses) => {
 }
 
 //************************************/
-// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NESECARIAS
+// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NECESARIAS
 // SOLO CUANDO TODAS LAS PROMESAS SE HAYAN CUMPLIDO
 //************************************/
 const dataUsers = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
