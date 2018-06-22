@@ -2,7 +2,16 @@ body {
     background-color: #fff;
     font-family: sans-serif;
 }
-
+.divBody{
+    position: #fff;
+    background-color:#F2F2F2;
+    top: 0;
+    width: 80%;
+    height: auto;
+    left: 260px;
+    right: 0;
+        
+}
 
 .buttonStudents{
     background-color: #56F69A; 
