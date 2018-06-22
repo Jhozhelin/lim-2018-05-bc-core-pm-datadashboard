@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
 }
 .divBody{
-    position: #fff;
+    position:relative;
     background-color:#F2F2F2;
     top: 0;
     width: 80%;
