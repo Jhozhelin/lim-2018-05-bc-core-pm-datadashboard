@@ -53,9 +53,9 @@ body {
 .logo{    
     position: absolute;
     top: 0;
-    width: 19%;
+    width: 20%;
     height: auto;
-    left: 14px;
+    left: 0;
     right: 0;
 }
 
