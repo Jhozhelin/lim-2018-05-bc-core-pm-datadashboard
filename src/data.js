@@ -6,139 +6,224 @@
 //************************************/
 let userRaw = []
 let progressRaw
-let coursesRaw = []
+let coursesRaw
 
 //Variables globales
-let percent = new Object;
+let percent = new Object()
 let courses = []
-let usersWithStats = [];
+let usersWithStats = []
+//usersWithStats["stats"] = []
+let filterNameArray = []
+
 //************************************/
+
 let computeCourses = () => {
-  for (var i = 0; i < coursesRaw.length; i++) {
-    courses.push(coursesRaw[i].id)
-  }
+  courses = []
+  coursesRaw.map(coh => {
+    data = {}
+    data[coh.id] = coh.coursesIndex
+    courses.push(data)
+  })
 }
 
 let getPercent = (quantity, total) => {
-
-  if (quantity === 0){
+  if (quantity === 0) {
     return 0
   } else {
-    return Math.round((quantity/total)*100)
+    return Math.round((quantity / total) * 100)
   }
 }
 
 let getAverage = (score, total) => {
-  return Math.round(score/total)
+  return Math.round(score / total)
 }
 
 let computeUsersStats = (users, progress, courses) => {
+  users.map(user => {
+    let idUser = user.id
+    let cohorUser = user.signupCohort
+    let nameUser = user.name.toUpperCase()
 
-  users.map((user) => {
-    idUser = user.id
+    let percentUser = 0
 
-    numberQuiz = 0
-    completedQuiz = 0
-    percentQuiz = 0
-    scoreSum = 0
-    scoreAvg = 0
+    let numberQuiz = 0
+    let completedQuiz = 0
+    let percentQuiz = 0
+    let scoreSum = 0
+    let scoreAvg = 0
 
-    numberRead = 0
-    completedRead = 0
-    percentRead = 0
+    let numberRead = 0
+    let completedRead = 0
+    let percentRead = 0
 
-    numberPractice = 0
-    completedPractice = 0
-    percentPractice = 0
+    let numberPractice = 0
+    let completedPractice = 0
+    let percentPractice = 0
 
-    if(progress[idUser].hasOwnProperty("intro")){
-      percentUser = progress[idUser].intro.percent
+    //Obtenemos el cohort del usuario
+    courses.find(coh => {
+      if (Object.keys(coh)[0] === cohorUser) {
+        Object.entries(coh).map(un => {
+          cohortName = Object.keys(un[1])
 
-      unitsArray = Object.entries(progress[idUser].intro.units)
-      unitsArray.map((units) => {
-        Object.entries(units[1].parts)
-          .map((unit)=> {
-            if(unit[1].type === "read"){
-              numberRead++
-              completedRead+= unit[1].completed
-            } else if (unit[1].type === "quiz"){
-              numberQuiz++
-              completedQuiz+= unit[1].completed
-              if(unit[1].completed === 0){
-                scoreSum+= 0
-              }else{
-                scoreSum += unit[1].score
-              }
-            } else if (unit[1].type === "practice"){
-              numberPractice++
-              completedPractice += unit[1].completed
-            }
-          })
-      })
+          if (progress[idUser].hasOwnProperty(cohortName)) {
+            percentUser = progress[idUser][cohortName].percent
 
-    }else{
-      percentUser = -1
-    }
+            unitsArray = Object.entries(progress[idUser][cohortName].units)
+            unitsArray.map(units => {
+              Object.entries(units[1].parts).map(unit => {
+                if (unit[1].type === "read") {
+                  numberRead++
+                  completedRead += unit[1].completed
+                } else if (unit[1].type === "quiz") {
+                  numberQuiz++
+                  completedQuiz += unit[1].completed
+                  if (unit[1].completed === 0) {
+                    scoreSum += 0
+                  } else {
+                    scoreSum += unit[1].score
+                  }
+                } else if (unit[1].type === "practice") {
+                  numberPractice++
+                  completedPractice += unit[1].completed
+                }
+              })
+            })
+            scoreAvg = getAverage(scoreSum, numberQuiz)
+          }
+        })
+      }
+    })
 
     percentRead = getPercent(completedRead, numberRead)
     percentQuiz = getPercent(completedQuiz, numberQuiz)
     percentPractice = getPercent(completedPractice, numberPractice)
-    scoreAvg = getAverage(scoreSum, numberQuiz)
 
-
-    stats = {}
-    stats[idUser] = {
-      stats : {
-        percent : percentUser,
+    userStats = {
+      id: idUser,
+      name: nameUser,
+      stats: {
+        percent: percentUser,
         exercises: {
           total: numberPractice,
-          completed : completedPractice,
+          completed: completedPractice,
           percent: percentPractice
         },
-        reads :{
-          total : numberRead,
-          completed : completedRead,
-          percent : percentRead
+        reads: {
+          total: numberRead,
+          completed: completedRead,
+          percent: percentRead
         },
-        quizes:{
+        quizes: {
           total: numberQuiz,
           completed: completedQuiz,
           percent: percentQuiz,
-          scoreSum : scoreSum,
-          scoreAvg : scoreAvg
+          scoreSum: scoreSum,
+          scoreAvg: scoreAvg
         }
       }
     }
 
-    usersWithStats.push(stats)
+    usersWithStats.push(userStats)
   })
+
+  return usersWithStats
 }
 
+let sortUsers = (users, orderBy, orderDirection) => {
+  if (orderBy === "nombre" || orderBy === "name") {
+    users.stats.sort((a, b) => {
+      x = a.name
+      y = b.name
+
+      return x < y ? -1 : x > y ? 1 : 0
+    })
+
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+
+  if (orderBy === "porcentaje" || orderBy === "percent") {
+    users.stats.sort((a, b) => a.percent - b.percent)
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+
+  if (orderBy === "pEjercicios" || orderBy === "pExercises") {
+    users.stats.sort((a, b) => a.exercises.percent - b.exercises.percent)
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+
+  if (orderBy === "pQuizes" || orderBy === "pquizes") {
+    users.stats.sort((a, b) => a.quizes.percent - b.quizes.percent)
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+
+  if (orderBy === "pQuizesAvg" || orderBy === "pquizesavg") {
+    users.stats.sort((a, b) => a.quizes.scoreAvg - b.quizes.scoreAvg)
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+
+  if (orderBy === "pLecturas" || orderBy === "pReads") {
+    users.stats.sort((a, b) => a.reads.percent - b.reads.percent)
+    if (orderDirection === "DESC") {
+      users.stats.reverse()
+    }
+  }
+}
+
+let filterUsers = (users, search) => {
+  filterNameArray = []
+  filterNameArray.stats = []
+
+  users.stats.filter(
+    x =>
+    x.name.includes(search.toUpperCase()) ? filterNameArray.stats.push(x) : 0
+  )
+  return filterNameArray
+}
+let processCohortData = options => {}
+
 //************************************/
-// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NECESARIAS
+// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NESECARIAS
 // SOLO CUANDO TODAS LAS PROMESAS SE HAYAN CUMPLIDO
 //************************************/
-const dataUsers = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-  .then(response => response.json())
-const dataProgress = fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
-  .then(response => response.json())
-const dataCohorts = fetch('../data/cohorts.json')
-  .then(response => response.json())
+const dataUsers = fetch(
+  "../data/cohorts/lim-2018-03-pre-core-pw/users.json"
+).then(response => response.json())
+const dataProgress = fetch(
+  "../data/cohorts/lim-2018-03-pre-core-pw/progress.json"
+).then(response => response.json())
+const dataCohorts = fetch("../data/cohorts.json").then(response =>
+  response.json()
+)
 
-Promise.all([dataUsers, dataProgress, dataCohorts])
-  .then(
-    (data) => {
-      //Copiamos la data de usuario en bruto
-      userRaw = data[0]
-      //Copiamos todo el progress en bruto
-      progressRaw = data[1]
-      //Copiamos todo los cursos en bruto
-      coursesRaw = data[2]
+Promise.all([dataUsers, dataProgress, dataCohorts]).then(data => {
+  //Copiamos la data de usuario en bruto
+  userRaw = data[0]
+  //Copiamos todo el progress en bruto
+  progressRaw = data[1]
+  //Copiamos todo los cursos en bruto
+  coursesRaw = data[2]
 
-      //Procesamos la informacion recaudada en funciones
-      computeCourses()
+  //Procesamos la informacion recaudada en funciones
+  computeCourses()
 
-      //test
-      computeUsersStats(userRaw, progressRaw, courses)
-    }
-  )
+  //test
+  computeUsersStats(userRaw, progressRaw, courses)
+  //sortUsers(usersWithStats, "porcentaje", "ASC")
+  //filterUsers(usersWithStats, "alexandra")
+})
+
+window.processCohortData = processCohortData
+window.computeUsersStats = computeUsersStats
+window.sortUsers = sortUsers
+window.filterUsers = filterUsers
