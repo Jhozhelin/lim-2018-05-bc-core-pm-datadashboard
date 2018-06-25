@@ -6,6 +6,7 @@ const buttonStudents = document.querySelector('.buttonStudents')
 buttonStudents.addEventListener('click', () => {
   for (let i = 0; i < usersWithStats.length; i++) {
     let divBody = document.createElement('div')
+    divBody.className = 'divBody'
     boxbody.appendChild(divBody)
 
     let boxname = document.createElement('div')
