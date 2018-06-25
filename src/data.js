@@ -222,6 +222,7 @@ Promise.all([dataUsers, dataProgress, dataCohorts]).then(data => {
   //sortUsers(usersWithStats, "porcentaje", "ASC")
   //filterUsers(usersWithStats, "alexandra")
 })
+//agregar la api en el siguiente lado
 
 window.processCohortData = processCohortData
 window.computeUsersStats = computeUsersStats
