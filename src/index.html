@@ -6,47 +6,40 @@
     <title>Dashboard Laboratoria</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>      
-
-      <div class="boxMenu">
-        </div>     
-
+  <body>         
+      <div>
       <img src="imagen/logo.png" class="logo">
-      
+      </div>
 
-      <div class="boxcenter"> lim-2018-03-pre-core-pw <br>
-          500 Alumnas <br>
-          Evaluación 
-        </div>
-
-        <img src="imagen/Picture.png" class= "boxPicture">                             
-          
-     
+       
       <!-- <div>
-          <button class="button"> <strong>tiempo</strong> </button>
+          <button class="button"> tiempo </button>
           </div> -->
       
        <!-- botones --> 
-      <div>
-      <button class="buttonMexico"> <strong>Ciudad de México</strong> </button>
-      </div>
+       <div class="boxMenu">
+         
+      <img src="imagen/Picture.png" class= "User">   
       
-      <div>
-      <button class="buttonLima"> <strong>Lima</strong> </button>
-    </div>
+      <button id="buttonMexico" class="button-filter">Ciudad de México >> </button>       
+      
+      <button id="buttonLima" class="button-filter"> Lima >> </button>
+    
+      <button id="buttonGuadalajara" class="button-filter"> Guadalajara >> </button>
 
-      <div>
-      <button class="buttonGuadalajara"> <strong>Guadalajara </strong> </button>
-    </div>
+      <button id="buttonChile" class="button-filter"> Santiago de Chile >>  </button>
 
-    <div>
-        <button class="buttonChile"> <strong>Santiago de Chile </strong> </button>
-      </div>
-
-      <div>
-          <button class="buttonBrasil"> <strong>Sao Paulo </strong> </button>
+      <button id="buttonBrasil" class="button-filter"> Sao Paulo >>  </button>
+      
         </div>
       
+        <div class="boxcenter"> lim-2018-03-pre-core-pw 
+          500 Alumnas 
+          Evaluación 
+        </div>
+        <div id="contenidoCohorts" style="display: none;" >
+          <select id="cohorts"></select>
+        </div>
   
     <!-- caja para llenar el contenido -->
       <div class="boxbody">        
