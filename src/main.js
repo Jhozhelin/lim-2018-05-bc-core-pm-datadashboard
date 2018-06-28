@@ -21,9 +21,13 @@ Promise.all([dataCohorts, dataProgress, dataUsers]).then (data =>{
     //Data de los usuarios en bruto
     usersDataRaw = data [2]
 
+    let courses = ["intro"]
+    computeUsersStats(usersDataRaw, progressDataRaw,courses)
+
+   
 })
 //***CREANDO ARGUMENTO OPTIONS */
-options = {
+/* options = {
     cohort: cohortsDataRaw[31], //Objeto cohort (de la lista de cohorts)
     cohortData: {
         users: usersDataRaw, //Arreglo de usuarios miembros del cohort
