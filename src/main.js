@@ -22,7 +22,8 @@ Promise.all([dataCohorts, dataProgress, dataUsers]).then (data =>{
     usersDataRaw = data [2]
 
     let courses = ["intro"]
-    computeUsersStats(usersDataRaw, progressDataRaw,courses)
+    
+    console.log(computeUsersStats(usersDataRaw, progressDataRaw,courses))
 
    
 })

@@ -1,5 +1,5 @@
 //Primera función
-const computeUsersStats = (users, progress, courses) => {
+window.computeUsersStats = (users, progress, courses) => {
     let usersWithStats = []
 
 /*     courses.map(n => {
@@ -85,7 +85,7 @@ const computeUsersStats = (users, progress, courses) => {
 
 
 //Segunda función
-const sortUsers =  (users, orderBy, orderDirection) => {
+window.sortUsers =  (users, orderBy, orderDirection) => {
     //users: Arreglo de objetos creado con computeUsersStats().
 //orderBy: String que indica el criterio de ordenado. Debe permitir ordenar por nombre, porcentaje de completitud total, porcentaje de ejercicios autocorregidos completados, porcentaje de quizzes completados, puntuación promedio en quizzes completados, y porcentaje de lecturas completadas.
 //orderDirection: La dirección en la que queremos ordenar. Posibles valores: ASC y DESC (ascendiente y descendiente).
@@ -93,7 +93,7 @@ const sortUsers =  (users, orderBy, orderDirection) => {
 }
 
 //Tercerca función
-const filterUsers = (users, search) => {
+window.filterUsers = (users, search) => {
     //users: Arreglo de objetos creado con computeUsersStats()
     //search: String de búsqueda
 
@@ -101,15 +101,10 @@ const filterUsers = (users, search) => {
 }
 
 //Cuarta función
-const processCohortData = (options) => {
+window.processCohortData = (options) => {
     let computedData = computeUsersStats (options.cohortData.users, options.cohortData.progress) //courses
     let sortedData = sortUsers (computedData) //orderBy, orderDirection
     let filteredData = filterUsers (sortedData) //search
     
     return filteredData//Nuevo arreglo de usuarios ordenado y filtrado con la propiedad stats añadida
 }
-
-computeUsersStats.window = computeUsersStats
-sortUsers.window = sortUsers
-filterUsers.window = filterUsers
-processCohortData = processCohortData
