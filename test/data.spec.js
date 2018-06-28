@@ -23,10 +23,12 @@ describe('data', () => {
     const { users, progress } = fixtures;
 
     it('debería retornar arreglo de usuarios con propiedad stats', () => {
+    
+
       const processed = computeUsersStats(users, progress, courses);
 
       assert.equal(users.length, processed.length);
-
+console.log(users.stats)
       processed.forEach(user => {
         assert.ok(user.hasOwnProperty('stats'));
         assert.isNumber(user.stats.percent);

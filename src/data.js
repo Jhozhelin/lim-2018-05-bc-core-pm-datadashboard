@@ -130,6 +130,8 @@ let computeUsersStats = (users, progress, courses) => {
   return usersWithStats
 }
 
+console.log(usersWithStats)
+
 let sortUsers = (users, orderBy, orderDirection) => {
   if (orderBy === "nombre" || orderBy === "name") {
     users.stats.sort((a, b) => {
@@ -193,7 +195,7 @@ let filterUsers = (users, search) => {
 let processCohortData = options => {}
 
 //************************************/
-// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NESECARIAS
+// COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NECESARIAS
 // SOLO CUANDO TODAS LAS PROMESAS SE HAYAN CUMPLIDO
 //************************************/
 const dataUsers = fetch(
@@ -221,6 +223,9 @@ Promise.all([dataUsers, dataProgress, dataCohorts]).then(data => {
   computeUsersStats(userRaw, progressRaw, courses)
   //sortUsers(usersWithStats, "porcentaje", "ASC")
   //filterUsers(usersWithStats, "alexandra")
+})
+.catch( (err) => {
+  return err
 })
 
 window.processCohortData = processCohortData
