@@ -8,16 +8,18 @@ let userRaw = []
 let progressRaw
 let coursesRaw
 
+
 //Variables globales
 let percent = new Object()
 let courses = []
-let usersWithStats = []
+
 //usersWithStats["stats"] = []
 let filterNameArray = []
 
 //************************************/
 
-let computeCourses = () => {
+/* let computeCourses = () => {
+  
   courses = []
   coursesRaw.map(coh => {
     data = {}
@@ -25,7 +27,7 @@ let computeCourses = () => {
     courses.push(data)
   })
 }
-
+ */
 let getPercent = (quantity, total) => {
   if (quantity === 0) {
     return 0
@@ -38,7 +40,15 @@ let getAverage = (score, total) => {
   return Math.round(score / total)
 }
 
-let computeUsersStats = (users, progress, courses) => {
+window.computeUsersStats = (users, progress, courses) => {
+  let usersWithStats = [];
+  
+  courses.map(course => {
+    data = {}
+    data[course.id] = course.coursesIndex
+    return courses.push(data)
+  })
+
   users.map(user => {
     let idUser = user.id
     let cohorUser = user.signupCohort
@@ -99,40 +109,34 @@ let computeUsersStats = (users, progress, courses) => {
     percentQuiz = getPercent(completedQuiz, numberQuiz)
     percentPractice = getPercent(completedPractice, numberPractice)
 
-    userStats = {
-      id: idUser,
-      name: nameUser,
-      stats: {
-        percent: percentUser,
-        exercises: {
+    user.stats = {
+      percent: percentUser,
+      exercises: {
           total: numberPractice,
           completed: completedPractice,
           percent: percentPractice
         },
-        reads: {
+      reads: {
           total: numberRead,
           completed: completedRead,
           percent: percentRead
         },
-        quizes: {
+      quizes: {
           total: numberQuiz,
           completed: completedQuiz,
           percent: percentQuiz,
           scoreSum: scoreSum,
           scoreAvg: scoreAvg
-        }
-      }
-    }
-
-    usersWithStats.push(userStats)
+        }     
+      }  
+      return usersWithStats.push(user) 
   })
 
   return usersWithStats
 }
 
-console.log(usersWithStats)
 
-let sortUsers = (users, orderBy, orderDirection) => {
+window.sortUsers = (users, orderBy, orderDirection) => {
   if (orderBy === "nombre" || orderBy === "name") {
     users.stats.sort((a, b) => {
       x = a.name
@@ -182,7 +186,7 @@ let sortUsers = (users, orderBy, orderDirection) => {
   }
 }
 
-let filterUsers = (users, search) => {
+window.filterUsers = (users, search) => {
   filterNameArray = []
   filterNameArray.stats = []
 
@@ -192,7 +196,7 @@ let filterUsers = (users, search) => {
   )
   return filterNameArray
 }
-let processCohortData = options => {}
+window.processCohortData = options => {}
 
 //************************************/
 // COMENZAMOS A HACER LAS PROMESAS Y A EJECUTAR LAS FUNCIONES NECESARIAS
@@ -215,12 +219,11 @@ Promise.all([dataUsers, dataProgress, dataCohorts]).then(data => {
   progressRaw = data[1]
   //Copiamos todo los cursos en bruto
   coursesRaw = data[2]
-
   //Procesamos la informacion recaudada en funciones
-  computeCourses()
+  computeUsersStats(userRaw,progressRaw,coursesRaw)
 
+  console.log(computeUsersStats(userRaw,progressRaw,coursesRaw))
   //test
-  computeUsersStats(userRaw, progressRaw, courses)
   //sortUsers(usersWithStats, "porcentaje", "ASC")
   //filterUsers(usersWithStats, "alexandra")
 })
@@ -228,7 +231,7 @@ Promise.all([dataUsers, dataProgress, dataCohorts]).then(data => {
   return err
 })
 
-window.processCohortData = processCohortData
+/* window.processCohortData = processCohortData
 window.computeUsersStats = computeUsersStats
 window.sortUsers = sortUsers
-window.filterUsers = filterUsers
+window.filterUsers = filterUsers */
