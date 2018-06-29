@@ -41,15 +41,13 @@ let getAverage = (score, total) => {
 }
 
 window.computeUsersStats = (users, progress, courses) => {
-  let usersWithStats = [];
-  
   courses.map(course => {
     data = {}
     data[course.id] = course.coursesIndex
     return courses.push(data)
   })
 
-  users.map(user => {
+  usersWithStats = users.map(user => {
     let idUser = user.id
     let cohorUser = user.signupCohort
     let nameUser = user.name.toUpperCase()
@@ -129,7 +127,7 @@ window.computeUsersStats = (users, progress, courses) => {
           scoreAvg: scoreAvg
         }     
       }  
-      return usersWithStats.push(user) 
+      return user
   })
 
   return usersWithStats
