@@ -6,7 +6,7 @@ window.computeUsersStats = (users, progress, courses) => {
         console.log(Object.keys(n.coursesIndex))
     }) */
 
-    users.map (user => {
+    for (let user of users){
         //Inicializamos variables en 0
         let percentUser = 0
 
@@ -73,10 +73,9 @@ window.computeUsersStats = (users, progress, courses) => {
                 scoreAvg: scoreAvg
             }
             }
-        })
+        }
         
         usersWithStats.push(users)
-        
     return usersWithStats 
 
 }
@@ -102,9 +101,9 @@ window.filterUsers = (users, search) => {
 
 //Cuarta función
 window.processCohortData = (options) => {
-    let computedData = computeUsersStats (options.cohortData.users, options.cohortData.progress) //courses
+/*     let computedData = computeUsersStats (options.cohortData.users, options.cohortData.progress) //courses
     let sortedData = sortUsers (computedData) //orderBy, orderDirection
     let filteredData = filterUsers (sortedData) //search
     
-    return filteredData//Nuevo arreglo de usuarios ordenado y filtrado con la propiedad stats añadida
+    return filteredData//Nuevo arreglo de usuarios ordenado y filtrado con la propiedad stats añadida */
 }
