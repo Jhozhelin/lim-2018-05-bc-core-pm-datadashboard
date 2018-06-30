@@ -1,5 +1,5 @@
 # Data Dashboard
-_Proyecto diseñado y elaborado por Debbie Miñano y Jhoselyn Mancilla para el  bootcamp de laboratoria 2018._
+_Proyecto diseñado y elaborado por Debbie Miñano y Jhoselyn Mancilla para el  bootcamp de Laboratoria 2018._
 
 ## Índice
 
