@@ -36,20 +36,20 @@ Primero debimos descubrir e investigar a nuestros usuarios. Esto nos permitió p
 
 - **Cómo fue tu proceso de diseño:** Primero, tratamos de entender que nos estaba pidiendo realizar laboratoria. Con esa idea decidimmos elaborar un sketch. Sin embargo, necesitábamos conocer a nuestras usuarias. Páctamos una entrevista y aprovechamos para que nos brinden una oinión de nuestro diseño. Con ese feedback, pasamos elaborar un prototipo en baja fidelidad y luego en alta. Siempre aprovechando unos minutos para probar nuestros prototipos con las usuarias.
 
-Aquí nuestra guía de entrevista en profundidad:
+##### *Guía de entrevista en profundidad*:
 ![](https://fotos.subefotos.com/5f24f9222e513f2414e442b7b04ea5f5o.jpg)
 
-Aquí nuestro diseño de user persona:
+##### *User persona*
 ![](https://fotos.subefotos.com/e2dfdaf8e9850d4ac6c94d9d43472545o.jpg)
 
-#### *Sketch de la solución (prototipo de baja fidelidad)*
+##### *Sketch*
 ![](https://fotos.subefotos.com/18627f3a20293e5c5586327118217c5fo.jpg)
 
-#### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)*
+##### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)*
 ![](https://fotos.subefotos.com/f455bb7a76864ea2fcebf60e4e3ee6b8o.png)
 
 ## Implementación de la interfaz de usuario
-Si bien existen muchas librerías y frameworks disponibles, este proyecto ha sido realizado usando vanilla javascript. Guiadas del tiempo disponible y las expectativas de nuestras entrevistadas, presentamos una interfaz sencilla que puede ser anexaga a un login y otras opciones. ¡Anímate a hacerle cambios a este proyecto!
+Si bien existen muchas librerías y frameworks disponibles, este proyecto ha sido realizado usando vanilla javascript. Guiadas del tiempo disponible y las expectativas de nuestras entrevistadas, presentamos una interfaz sencilla que puede ser anexada a un login y otras opciones. ¡Anímate a hacerle cambios a este proyecto!
 
 ## Flujo de trabajo
 
