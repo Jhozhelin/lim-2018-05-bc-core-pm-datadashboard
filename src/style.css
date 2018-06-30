@@ -136,6 +136,10 @@ header p {
   padding-left: 50px;
 }
 
+.contentstart {
+  color: #ff009e;
+}
+
 h1{
   font-size: 48px;
 }
