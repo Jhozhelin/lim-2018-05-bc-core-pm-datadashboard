@@ -10,7 +10,7 @@ _Proyecto diseñado y elaborado por Debbie Miñano y Jhoselyn Mancilla para el  
 * **Flujo de trabajo** Revisa esta información para conocer como acceder y sacarle el máximo provecho a nuestro proyecto.
 
 ***
-Prueba nuestro demo aquí: https://debbievejarano.github.io/lim-2018-05-bc-core-pm-datadashboard/src/
+Prueba nuestro demo aquí: https://jhozhelin.github.io/lim-2018-05-bc-core-pm-datadashboard/src/
 
 ## User experience design
 
@@ -20,7 +20,7 @@ Antes de empezar a diseñar nuestro proyecto decidimos replantearnos cuatro valo
 
 Ahora que llegamos a un acuerdo, iniciamos el desarrollo:
 
-###### **Definición del producto**
+#### **Definición del producto**
 
 Primero debimos descubrir e investigar a nuestros usuarios. Esto nos permitió plantear la forma de resolver sus necesidades. Para la investigación, aplicamos entrevistas en profundidad a usuarios y expertos. Y cuando obtuvimos esa información, creamos un user persona para que los represente.
 
@@ -42,8 +42,35 @@ Aquí nuestra guía de entrevista en profundidad:
 Aquí nuestro diseño de user persona:
 ![](https://fotos.subefotos.com/e2dfdaf8e9850d4ac6c94d9d43472545o.jpg)
 
-###### *Sketch de la solución (prototipo de baja fidelidad)*
+#### *Sketch de la solución (prototipo de baja fidelidad)*
 ![](https://fotos.subefotos.com/18627f3a20293e5c5586327118217c5fo.jpg)
 
-###### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)*
+#### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)*
 ![](https://fotos.subefotos.com/f455bb7a76864ea2fcebf60e4e3ee6b8o.png)
+
+## Implementación de la interfaz de usuario
+Si bien existen muchas librerías y frameworks disponibles, este proyecto ha sido realizado usando vanilla javascript. Guiadas del tiempo disponible y las expectativas de nuestras entrevistadas, presentamos una interfaz sencilla que puede ser anexaga a un login y otras opciones. ¡Anímate a hacerle cambios a este proyecto!
+
+## Flujo de trabajo
+
+#### Ejecutar la aplicación localmente
+Necesitas instalar:
+* Git Bash
+Luego, debes *clonar* este repositorio en tu equipo
+```bash
+git clone https://github.com/Jhozhelin/lim-2018-05-bc-core-pm-datadashboard.git
+```
+
+#### Instala dependencias
+Necesitas instalar
+* Node.js®
+
+Luego, ejecuta el comando npm install
+```
+npm install
+```
+
+Finalmente, este proyecto esta provisto de tests que puedes ejecutar con el siguiente comando
+```
+npm test
+```

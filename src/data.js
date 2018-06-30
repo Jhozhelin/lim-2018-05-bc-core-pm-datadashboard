@@ -30,6 +30,7 @@ let computeUsersStats = (users, progress, courses) => {
   usersWithStats = []
 
   users.map(user => {
+    if (user.role === "student") {
     let percentUser = 0
 
     let numberQuiz = 0
@@ -155,6 +156,7 @@ let computeUsersStats = (users, progress, courses) => {
     }
 
     usersWithStats.push(userStats)
+  }
   })
 
   return usersWithStats
