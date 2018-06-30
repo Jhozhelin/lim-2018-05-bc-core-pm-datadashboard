@@ -3,7 +3,7 @@ let cohortsDataRaw = []
 let progressDataRaw = {}
 let usersDataRaw = []
 let options = {}
-
+let gatos
 const dataCohorts = fetch('../data/cohorts.json')
 .then(response => response.json())
 
@@ -21,9 +21,8 @@ Promise.all([dataCohorts, dataProgress, dataUsers]).then (data =>{
     //Data de los usuarios en bruto
     usersDataRaw = data [2]
 
-    let courses = ["intro"]
     
-    console.log(computeUsersStats(usersDataRaw, progressDataRaw,courses))
+    gatos = computeUsersStats(usersDataRaw, progressDataRaw,cohortsDataRaw)
 
    
 })
