@@ -1,86 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    
-    <title>Dashboard Laboratoria</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="sidenav" id="mySidenav">
-      <div class="close" onclick="toggleSidebar()">
-          <i class="fas fa-times"></i>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Laboratoria - Dashboard</title>
+</head>
+
+<body>
+  <div class="sidenav" id="mySidenav">
+    <div class="close" onclick="toggleSidebar()">
+        <i class="fas fa-times"></i>
+    </div>
+    <div class="logocontainer">
+      <img src="img/logo.png" class="logo">
+    </div>
+    <img src="img/user.jpg" class="user-img">
+    <div class="user-name">Mia
+      <br> Sotomayor</div>
+    <div class="user-type">Administradora</div>
+
+    <div class="sidemenu">
+      <button class="menuButton accordion">Campus
+        <i class="fas fa-angle-double-right"></i>
+      </button>
+      <div class="panel">
       </div>
-      <div class="logocontainer">
-        <img src="img/logo.png" class="logo">
-      </div>
-      <img src="img/user.jpg" class="user-img">
-      <div class="user-name">Mia
-        <br> Sotomayor</div>
-      <div class="user-type">Administradora</div>
-  
-      <div class="sidemenu">
-        <button class="menuButton accordion">Campus
+      <button class="menuButton">Mensajes</button>
+      <button class="menuButton">Configuración</button>
+    </div>
+  </div>
+  <div class="content" id="mycontent">
+    <header>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <span>
           <i class="fas fa-angle-double-right"></i>
-        </button>
-        <div class="panel">
-        </div>
-        <button class="menuButton">Mensajes</button>
-        <button class="menuButton">Configuración</button>
+        </span>
       </div>
-    </div>
-    <div class="content" id="mycontent">
-      <header>
-        <div class="toggle-btn" onclick="toggleSidebar()">
-          <span>
-            <i class="fas fa-angle-double-right"></i>
-          </span>
-        </div>
-        <p>Bienvenida Mia ¿que haremos hoy?</p>
-      </header>
-  
-      <div class="loader"></div>
-  
-      <div class="contentdata">
-        <h1 id="h1content">¿Comenzamos?</h1>
-        <h2 id="h2content"></h2>
-        <hr>
-        <div>
-          <p id="textpanel">Selecciona un campus del menu para comenzar:</p>
-          <div class="searcharea">
-            <p class="buscarText">Buscar:</p>
-            <div class="search">
-              <input id="searchbox" type="text" onkeyup="search()">
-            </div>
+      <p>Bienvenida Mia ¿que haremos hoy?</p>
+    </header>
+
+    <div class="loader"></div>
+
+    <div class="contentdata">
+      <h1 id="h1content">¿Comenzamos?</h1>
+      <h2 id="h2content"></h2>
+      <hr>
+      <div>
+        <p id="textpanel">Selecciona un campus del menu para comenzar:</p>
+        <div class="searcharea">
+          <p class="buscarText">Buscar:</p>
+          <div class="search">
+            <input id="searchbox" type="text" onkeyup="search()">
           </div>
         </div>
-        <hr>
-        <!-- DIVS PARA LOS COHORT -->
-        <div class="grid2x2"></div>
-        <!-- DIVS PARA EL SEARCH -->
-        <div id="usersArea">
-          <div class="topsearchmenu">
-            <div class="sortbutton" onclick="sortBy('name')">Nombre
-              <i class="fas fa-sort"></i>
-            </div>
-            <div class="sortbutton" onclick="sortBy('reads')">Reads %
-              <i class="fas fa-sort"></i>
-            </div>
-            <div class="sortbutton" onclick="sortBy('excersises')">Practice %<i class="fas fa-sort"></i>
-            </div>
-            <div class="sortbutton" onclick="sortBy('quizz')">Quizz %
-              <i class="fas fa-sort"></i>
-            </div>
-            <div class="sortbutton" onclick="sortBy('percent')">Total
-              <i class="fas fa-sort"></i>
-            </div>
+      </div>
+      <hr>
+      <!-- DIVS PARA LOS COHORT -->
+      <div class="grid2x2"></div>
+      <!-- DIVS PARA EL SEARCH -->
+      <div id="usersArea">
+        <div class="topsearchmenu">
+          <div class="sortbutton" onclick="sortBy('name')">Nombre
+            <i class="fas fa-sort"></i>
           </div>
-          <div class="users"></div>
+          <div class="sortbutton" onclick="sortBy('reads')">Reads %
+            <i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('excersises')">Practice %<i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('quizz')">Quizz %
+            <i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('percent')">Total
+            <i class="fas fa-sort"></i>
+          </div>
         </div>
+        <div class="users"></div>
       </div>
     </div>
-  
-    <script src="data.js"></script>
-    <script src="main.js"></script>
-  </body>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>
