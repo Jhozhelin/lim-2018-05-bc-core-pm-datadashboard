@@ -17,33 +17,33 @@ window.computeUsersStats = (users, progress, courses) => {
         let completedQuiz = 0
         let percentQuiz = 0
         let scoreSum = 0
-        let scoreAvg = 0
+        let scoreAvg = 0 
 
         //No usar user.signupCohort porque hay users que no lo tienen como propiedad
-/*         courses.find (course =>{
+/*          courses.find (course =>{
             if (course.id == user.signupCohort){
                  console.log(user)
                 console.log(Object.keys(course.coursesIndex)) 
                 courses = Object.keys(course.coursesIndex)
             }
-        }) */
-        courses.map( x => {
+        })  */
+         courses.map( x => {
             y = Object.keys(x.coursesIndex)    
             if (progress[user.id].hasOwnProperty(courses)){
                 console.log(progress[user.id].intro.percent)
             }
-        })
+        }) 
 
-/*
-        if (progress[user.id].hasOwnProperty(courses)){
+
+         if (progress[user.id].hasOwnProperty(courses)){
             console.log(progress[user.id].intro.percent)
         }
         else {
             console.log("Sin datos")
-        }
-*/
+        } 
+
         //Creamos funciones para realizar operaciones
-        let getPercent = (quantity, total) => {
+         let getPercent = (quantity, total) => {
             if (quantity === 0) {
               return 0
             } else {
@@ -53,7 +53,7 @@ window.computeUsersStats = (users, progress, courses) => {
 
           let getAverage = (score, total) => {
             return Math.round(score / total)
-          }
+          } 
 
         //Damos nuevos valores a variables usando funciones
         percentRead = getPercent(completedRead, numberRead)
