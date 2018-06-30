@@ -29,3 +29,5 @@ const dataUsers = fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
     console.log(array[0])
 })
  */
+
+ 

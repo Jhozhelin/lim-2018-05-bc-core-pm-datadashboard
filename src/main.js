@@ -20,6 +20,13 @@ btnLima.addEventListener("click",()=>{
   contenido.style.display="block"
   document.getElementById("boxcenter")
 })
+
+
+var cohortLima = document.getElementById("myBtn");
+x.addEventListener("click", myFunction);
+
+
+
 //Botón students
 // buttonStudents.addEventListener('click', () => {
 //   for (let i = 0; i < usersWithStats.length; i++) {
