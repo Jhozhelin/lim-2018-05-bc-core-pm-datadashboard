@@ -12,8 +12,8 @@ global.fixtures = {
   users: require('../data/cohorts/lim-2018-03-pre-core-pw/users.json'),
 };
 
-global.progressCohortData = window.progressCohortData; //Verificar sipasa tests solo con window.pro...
-global.computeUsersStats = window.computeUsersStats
+/* global.progressCohortData = window.progressCohortData; //Verificar sipasa tests solo con window.pro...
+global.computeUsersStats = window.computeUsersStats */
 
 require('../src/data');
 require('./data.spec.js');
