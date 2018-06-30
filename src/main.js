@@ -35,27 +35,6 @@ Promise.all([dataCohorts, dataCampuses]).then(data => {
   addCampuses()
   makeAccordeonButton()
 })
-<<<<<<< HEAD
-
-
-var cohortLima = document.getElementById("myBtn");
-x.addEventListener("click", myFunction);
-
-
-
-//Botón students
-// buttonStudents.addEventListener('click', () => {
-//   for (let i = 0; i < usersWithStats.length; i++) {
-//     let divBody = document.createElement('div')
-//     boxbody.appendChild(divBody)
-
-//     let boxname = document.createElement('div')
-//     boxname.textContent = usersWithStats[i].name
-//     boxname.innerHTML = 'nombre: ' + boxname.textContent
-//     boxname.className = 'boxname'
-//     divBody.appendChild(boxname) //pinto los users
-=======
->>>>>>> 3b15830810eac14d002eb69417d0963c5f2ca1ef
 
 //-------------------------------------------------------
 //FUNCION PARA MOSTRAR, OCULTAR Y HACER APARECER EL MENU
