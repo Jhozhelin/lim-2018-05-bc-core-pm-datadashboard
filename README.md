@@ -36,6 +36,7 @@ Primero debimos descubrir e investigar a nuestros usuarios. Esto nos permitió p
 
 - **Cómo fue tu proceso de diseño:** Primero, tratamos de entender que nos estaba pidiendo realizar laboratoria. Con esa idea decidimmos elaborar un sketch. Sin embargo, necesitábamos conocer a nuestras usuarias. Páctamos una entrevista y aprovechamos para que nos brinden una oinión de nuestro diseño. Con ese feedback, pasamos elaborar un prototipo en baja fidelidad y luego en alta. Siempre aprovechando unos minutos para probar nuestros prototipos con las usuarias.
 
+
 ##### *Guía de entrevista en profundidad:*
 ![](https://fotos.subefotos.com/5f24f9222e513f2414e442b7b04ea5f5o.jpg)
 
