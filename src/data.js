@@ -1,24 +1,24 @@
 //Primera función
 window.computeUsersStats = (users, progress, courses) => {
-    usersWithStats= users.map(user =>{
+
+  //Inicializamos variables en 0
+    let percentUser = 0
+    let numberPractice = 0
+    let completedPractice = 0
+    let percentPractice = 0
+  
+    let numberRead = 0
+    let completedRead = 0
+    let percentRead = 0
+  
+    let numberQuiz = 0
+    let completedQuiz = 0
+    let percentQuiz = 0
+    let scoreSum = 0
+    let scoreAvg = 0
+
+  let usersWithStats= users.map(user =>{
         
-        //Inicializamos variables en 0
-        let percentUser = 0
-
-        let numberPractice = 0
-        let completedPractice = 0
-        let percentPractice = 0
-
-        let numberRead = 0
-        let completedRead = 0
-        let percentRead = 0
-
-        let numberQuiz = 0
-        let completedQuiz = 0
-        let percentQuiz = 0
-        let scoreSum = 0
-        let scoreAvg = 0 
-
         //No usar user.signupCohort porque hay users que no lo tienen como propiedad
 /*          courses.find (course =>{
             if (course.id == user.signupCohort){
@@ -27,42 +27,18 @@ window.computeUsersStats = (users, progress, courses) => {
                 courses = Object.keys(course.coursesIndex)
             }
         })  */
-         courses.map( x => {
+/*          courses.map( x => {
             y = Object.keys(x.coursesIndex)    
             if (progress[user.id].hasOwnProperty(courses)){
                 console.log(progress[user.id].intro.percent)
             }
         }) 
+ */
 
-
-         if (progress[user.id].hasOwnProperty(courses)){
-            console.log(progress[user.id].intro.percent)
-        }
-        else {
-            console.log("Sin datos")
-        } 
-
-        //Creamos funciones para realizar operaciones
-         let getPercent = (quantity, total) => {
-            if (quantity === 0) {
-              return 0
-            } else {
-              return Math.round((quantity / total) * 100)
-            }
-          }
-
-          let getAverage = (score, total) => {
-            return Math.round(score / total)
-          } 
-
-        //Damos nuevos valores a variables usando funciones
-        percentRead = getPercent(completedRead, numberRead)
-        percentQuiz = getPercent(completedQuiz, numberQuiz)
-        percentPractice = getPercent(completedPractice, numberPractice)
-
-        user.stats = {
+         if (progress[user.id].hasOwnProperty("intro") && progress[user.id].intro.hasOwnProperty("units")){
+          user.stats = {
             percent: percentUser,
-            excercises: {
+            exercises: {
                 total: numberPractice,
                 completed: completedPractice,
                 percent: percentPractice
@@ -80,10 +56,39 @@ window.computeUsersStats = (users, progress, courses) => {
                 scoreAvg: scoreAvg
             }
             }
+        }
+        else {
+          user.stats = {
+            percent: percentUser,
+            exercises: {
+                total: numberPractice,
+                completed: completedPractice,
+                percent: percentPractice
+            },
+            reads: {
+                total: numberRead,
+                completed: completedRead,
+                percent: percentRead
+            },
+            quizzes: {
+                total: numberQuiz,
+                completed: completedQuiz,
+                percent: percentQuiz,
+                scoreSum: scoreSum,
+                scoreAvg: scoreAvg
+            }
+            }        } 
+
+        //Damos nuevos valores a variables usando funciones
+        console.log(user.stats)
+
             return user
+
         })
+
+        // console.log(usersWithStats)
         
-    return usersWithStats 
+    return usersWithStats
 
 }
 

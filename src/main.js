@@ -21,8 +21,10 @@ Promise.all([dataCohorts, dataProgress, dataUsers]).then (data =>{
     //Data de los usuarios en bruto
     usersDataRaw = data [2]
 
+    courseData = "intro"
+
     
-    gatos = computeUsersStats(usersDataRaw, progressDataRaw,cohortsDataRaw)
+    gatos = computeUsersStats(usersDataRaw, progressDataRaw,courseData)
 
    
 })
