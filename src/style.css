@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter:700|Open+Sans');
 body {
   font-family: 'Bitter', serif;
+  background-color: #F2F2F2;
 }
 
 .sidenav {
@@ -135,6 +136,10 @@ header p {
   padding-top: 7px;
   height: 100px;
   padding-left: 50px;
+}
+
+.contentstart {
+  color: #ff009e;
 }
 
 h1{

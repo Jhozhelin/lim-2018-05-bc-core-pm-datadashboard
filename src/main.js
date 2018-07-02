@@ -127,7 +127,7 @@ let showCohort = id => {
       firstDiv.className = 'buttoncohort'
       secondDiv.innerHTML = x.id
       secondDiv.innerHTML +=
-        "<div class='subtext'> Alumnas " + x.usersCount + '</div>'
+        "<div class='subtext'> Usuarios: " + x.usersCount + '</div>'
       firstDiv.addEventListener(
         'click',
         function() {
