@@ -1,43 +1,94 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    
-    <title>Dashboard Laboratoria</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-      <img src="imagen/logo.png" class="logo">
+<html lang="en">
 
-      <div class="boxMenu">
-        <h2>ESTADÍSTICA DEL PROGRESO DE ALUMNAS</h2>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" integrity="sha384-3LK/3kTpDE/Pkp8gTNp2gR/2gOiwQ6QaO7Td0zV76UFJVhqLl4Vl3KL1We6q6wR9"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="img/isotipo.png" type="image/x-icon">
+  <title>Laboratoria - Dashboard</title>
+</head>
 
-      <div>
-      <button class="buttonStudents"> <strong>ALUMNAS</strong> </button>
-      </div>
-      
-      <div>
-      <button class="buttonCohorts"> <strong>COHORTS</strong> </button>
+<body>
+  <div class="sidenav" id="mySidenav">
+    <div class="close" onclick="toggleSidebar()">
+        <i class="fas fa-times"></i>
     </div>
-
-      <div>
-      <button class="buttonInstructors"> <strong>INSTRUCTORES</strong> </button>
+    <div class="logocontainer">
+      <img src="img/logo.png" class="logo">
     </div>
-  
-    <!-- caja para llenar el contenido -->
-      <div id="boxbody">        
+    <img src="img/user.jpg" class="user-img">
+    <div class="user-name">Alejandra Ramirez
       </div>
+    <div class="user-type">Administradora</div>
 
+    <div class="sidemenu">
+      <button class="menuButton accordion">Campus
+        <i class="fas fa-angle-double-right"></i>
+      </button>
+      <div class="panel">
+      </div>
+      <button class="menuButton">Configuración</button>
+      <button class="menuButton">Salir</button>
+    </div>
+  </div>
+  <div class="content" id="mycontent">
+    <header>
+      <div class="toggle-btn" onclick="toggleSidebar()">
+        <span>
+          <i class="fas fa-angle-double-left"></i>
+        </span>
+      </div>
+      <p>Bienvenida, Alejandra ¿Qué haremos hoy?</p>
+    </header>
+
+    <div class="loader"></div>
+
+    <div class="contentdata">
+      <h1 id="h1content" class= "contentstart">¿Comenzamos?</h1>
+      <h2 id="h2content"></h2>
+      <hr>
       <div>
-        <p id= "nameList"></p>        
+        <p id="textpanel">Selecciona un campus del menú para comenzar:</p>
+        <div class="searcharea">
+          <p class="buscarText">Buscar:</p>
+          <div class="search">
+            <input id="searchbox" type="text" onkeyup="search()">
+          </div>
+        </div>
       </div>
-      
+      <hr>
+      <!-- DIVS PARA LOS COHORTS -->
+      <div class="grid2x2"></div>
+      <!-- DIVS PARA EL SEARCH -->
+      <div id="usersArea">
+        <div class="topsearchmenu">
+          <div class="sortbutton" onclick="sortBy('name')">Nombre
+            <i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('reads')">Reads %
+            <i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('excersises')">Practice %<i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('quizz')">Quizz %
+            <i class="fas fa-sort"></i>
+          </div>
+          <div class="sortbutton" onclick="sortBy('percent')">Total
+            <i class="fas fa-sort"></i>
+          </div>
+        </div>
+        <div class="users"></div>
+      </div>
+    </div>
+  </div>
 
-      <!-- <p> ESATADISTICA DEL PROGRESO DE ALUMNAS </p> -->
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+</body>
 
-
-    <script src="data.js"></script>
-    <script src="main.js"></script>
-  </body>
 </html>
