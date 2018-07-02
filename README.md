@@ -14,9 +14,11 @@ Prueba nuestro demo aquí: https://jhozhelin.github.io/lim-2018-05-bc-core-pm-da
 
 ## User experience design
 
-Antes de empezar a diseñar nuestro proyecto decidimos replantearnos cuatro valores de trabajo para obtener mejores resultados.
+Antes de empezar a diseñar nuestro proyecto decidimos replantearnos cuatro valores de trabajo para obtener mejores resultados y el aprovechar el uso de la plataforma de trello.
 
 ![](https://fotos.subefotos.com/e346256a8614733b66a66d58759b5018o.jpg)
+
+![](https://fotos.subefotos.com/48960344735d76929e9256d2f1827664o.png)
 
 Ahora que llegamos a un acuerdo, iniciamos el desarrollo:
 

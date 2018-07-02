@@ -124,8 +124,10 @@ window.computeUsersStats = (users, progress, courses) => {
 
 //SEGUNDA FUNCIÓN
 window.sortUsers = (users, orderBy, orderDirection) => {
-  if (orderBy === 'name') {
-    users.sort((a, b) => {
+  let userOrderForTest = []
+
+  if (orderBy === 'name' ) {
+    userOrderForTest = users.sort((a, b) => {
       x = a.name
       y = b.name
 
@@ -133,44 +135,45 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     })
 
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
 
   if (orderBy === 'percent') {
-    users.sort((a, b) => a.stats.percent - b.stats.percent)
+    userOrderForTest = users.sort((a, b) => a.stats.percent - b.stats.percent)
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
 
   if (orderBy === 'pExercises') {
-    users.sort((a, b) => a.stats.exercises.percent - b.stats.exercises.percent)
+    userOrderForTest = users.sort((a, b) => a.stats.exercises.percent - b.stats.exercises.percent)
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
 
   if (orderBy === 'pquizes') {
-    users.sort((a, b) => a.stats.quizzes.percent - b.stats.quizzes.percent)
+    userOrderForTest = users.sort((a, b) => a.stats.quizzes.percent - b.stats.quizzes.percent)
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
 
   if (orderBy === 'pquizesavg') {
-    users.sort((a, b) => a.stats.quizzes.scoreAvg - b.stats.quizzes.scoreAvg)
+    userOrderForTest = users.sort((a, b) => a.stats.quizzes.scoreAvg - b.stats.quizzes.scoreAvg)
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
 
   if (orderBy === 'pReads') {
-    users.sort((a, b) => a.stats.reads.percent - b.stats.reads.percent)
+    userOrderForTest = users.sort((a, b) => a.stats.reads.percent - b.stats.reads.percent)
     if (orderDirection === 'DESC') {
-      users.reverse()
+      userOrderForTest = users.reverse()
     }
   }
+  return userOrderForTest
 }
 
 //TERCERA FUNCIÓN
