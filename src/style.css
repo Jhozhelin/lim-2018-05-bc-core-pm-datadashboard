@@ -125,8 +125,10 @@ button:focus{
   float: left;
 }
 
-.toggle-btn .fa-angle-double-right{
+
+.toggle-btn .fa-angle-double-left {
   font-size: 35px;
+  color: #56f89a;
 }
 
 header p {
@@ -137,6 +139,7 @@ header p {
 
 h1{
   font-size: 48px;
+  color:#ff009e;
 }
 
 hr{
@@ -146,8 +149,8 @@ hr{
 }
 
 p{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Bitter', serif;;
+  font-size: 20px;
 }
 
 .contentdata{
