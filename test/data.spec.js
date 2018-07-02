@@ -23,9 +23,9 @@ describe('data', () => {
     const { users, progress } = fixtures;
 
     it('debería retornar arreglo de usuarios con propiedad stats', () => {
-      const processed = computeUsersStats(users, progress, courses);
+    
 
-      assert.equal(users.length, processed.length);
+      const processed = computeUsersStats(users, progress, courses);
 
       processed.forEach(user => {
         assert.ok(user.hasOwnProperty('stats'));
@@ -35,11 +35,11 @@ describe('data', () => {
         assert.isObject(user.stats.reads);
       });
     });
-
+    
     describe('user.stats para el primer usuario en data de prueba - ver carpeta data/', () => {
 
       const processed = computeUsersStats(users, progress, courses);
-
+      console.log(processed[0])
       it(
         'debería tener propiedad percent con valor 53',
         () => assert.equal(processed[0].stats.percent, 53)
@@ -71,11 +71,11 @@ describe('data', () => {
         });
       });
 
-    });
+    }); 
 
   });
 
-  describe('sortUsers(users, orderBy, orderDirection)', () => {
+   describe('sortUsers(users, orderBy, orderDirection)', () => {
 
     it('debería retornar arreglo de usuarios ordenado por nombre ASC');
     it('debería retornar arreglo de usuarios ordenado por nombre DESC');
@@ -102,6 +102,6 @@ describe('data', () => {
 
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
 
-  });
+  }); 
 
 });
