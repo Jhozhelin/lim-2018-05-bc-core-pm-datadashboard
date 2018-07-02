@@ -10,7 +10,7 @@ _Proyecto diseñado y elaborado por Debbie Miñano y Jhoselin Mancilla para el  
 * **Flujo de trabajo** Revisa esta información para conocer como acceder y sacarle el máximo provecho a nuestro proyecto.
 
 ***
-Prueba nuestro demo aquí: (https://jhozhelin.github.io/lim-2018-05-bc-core-pm-datadashboard/src/)
+Prueba nuestro demo aquí: [https://jhozhelin.github.io/lim-2018-05-bc-core-pm-datadashboard/src/]
 
 ## User experience design
 
@@ -50,7 +50,7 @@ Primero debimos descubrir e investigar a nuestros usuarios. Esto nos permitió p
 
 
 ##### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad):*
-(https://www.figma.com/proto/GZJD2lJKA6xPodjwtljlot/Figma-Keyboard-Shortcuts?node-id=203%3A0&scaling=min-zoom)
+![https://www.figma.com/proto/GZJD2lJKA6xPodjwtljlot/Figma-Keyboard-Shortcuts?node-id=203%3A0&scaling=min-zoom]
 ![](https://fotos.subefotos.com/43411813ddcb863545e831e9ec35f0e7o.jpg)
 ![](https://fotos.subefotos.com/7761ba8d9b96bd4ebd4c2420701e0f4ao.jpg)
 ![](https://fotos.subefotos.com/f43dda22d3b765d29d4ddc1d32a90e6ao.jpg)
