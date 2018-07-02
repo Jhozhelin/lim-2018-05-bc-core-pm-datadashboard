@@ -1,5 +1,5 @@
 # Data Dashboard
-_Proyecto diseñado y elaborado por Debbie Miñano y Jhoselyn Mancilla para el  bootcamp de Laboratoria 2018._
+_Proyecto diseñado y elaborado por Debbie Miñano y Jhoselin Mancilla para el  bootcamp de Laboratoria 2018._
 
 ## Índice
 
@@ -50,7 +50,10 @@ Primero debimos descubrir e investigar a nuestros usuarios. Esto nos permitió p
 
 
 ##### *Diseño de la Interfaz de Usuario (prototipo de alta fidelidad):*
-![](https://fotos.subefotos.com/f455bb7a76864ea2fcebf60e4e3ee6b8o.png)
+![](https://subefotos.com/ver/?43411813ddcb863545e831e9ec35f0e7o.jpg)
+![](https://subefotos.com/ver/?7761ba8d9b96bd4ebd4c2420701e0f4ao.jpg)
+![](https://subefotos.com/ver/?f43dda22d3b765d29d4ddc1d32a90e6ao.jpg)
+![](https://subefotos.com/ver/?3a23f626c557d37b473b93e5ffe7e60co.jpg)
 
 
 ## Implementación de la interfaz de usuario
