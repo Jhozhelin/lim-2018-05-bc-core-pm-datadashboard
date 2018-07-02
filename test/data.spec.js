@@ -36,7 +36,7 @@ describe('data', () => {
       });
     });
     
-    /* describe('user.stats para el primer usuario en data de prueba - ver carpeta data/', () => {
+    describe('user.stats para el primer usuario en data de prueba - ver carpeta data/', () => {
 
       const processed = computeUsersStats(users, progress, courses);
       console.log(processed[0])
@@ -58,6 +58,7 @@ describe('data', () => {
           total: 3,
           completed: 2,
           percent: 67,
+          scoreSum: 57,
           scoreAvg: 29,
         });
       });
@@ -70,11 +71,11 @@ describe('data', () => {
         });
       });
 
-    }); */
+    }); 
 
   });
 
-  /* describe('sortUsers(users, orderBy, orderDirection)', () => {
+   describe('sortUsers(users, orderBy, orderDirection)', () => {
 
     it('debería retornar arreglo de usuarios ordenado por nombre ASC');
     it('debería retornar arreglo de usuarios ordenado por nombre DESC');
@@ -101,6 +102,6 @@ describe('data', () => {
 
     it('debería retornar arreglo de usuarios con propiedad stats y aplicar sort y filter');
 
-  }); */
+  }); 
 
 });
