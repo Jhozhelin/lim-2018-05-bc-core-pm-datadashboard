@@ -1,3 +1,10 @@
+//VARIABLES CONEXIÓN API
+let cohortRaw = []
+let campusesRaw
+let userRaw = []
+let progressRaw = {}
+let usersWithStats
+
 // VARIABLES
 let contentdata = document.querySelector('.contentdata')
 const mystyle = document.styleSheets[1]['cssRules']
@@ -13,10 +20,6 @@ const textpanel = document.getElementById('textpanel')
 const searchbox = document.getElementById('searchbox')
 const loader = document.getElementsByClassName('loader')
 
-let userRaw = []
-let progressRaw
-let usersWithStats
-
 // FETCH INICIALES
 const dataCohorts = fetch('https://api.laboratoria.la/cohorts').then(response =>
   response.json()
@@ -29,7 +32,7 @@ Promise.all([dataCohorts, dataCampuses]).then(data => {
   displayShowHide(loader[0], 'hide')
   displayShowHide(contentdata, 'show')
 
-  coursesRaw = data[0]
+  cohortRaw = data[0]
   campusesRaw = data[1]
 
   addCampuses()
@@ -119,7 +122,7 @@ let showCohort = id => {
   textpanel.innerHTML = 'Selecciona un campus del menu para comenzar:'
 
   // FILTRA LOS COHORTS POR ID QUE COINCIDA CON EL ID DEL CAMPUS
-  coursesRaw.filter(x => {
+  cohortRaw.filter(x => {
     if (x.id.includes(id)) {
       const firstDiv = document.createElement('div')
       const secondDiv = document.createElement('div')
@@ -147,6 +150,15 @@ let showCohort = id => {
   }
 }
 
+//CREAMOS FUNCIÓN PARA OBTENER CURSOS
+  let computeCourses = idcohort => {
+    for (n in cohortRaw) {
+      if (cohortRaw[n].id === idcohort) {
+        courses = Object.keys(cohortRaw[n].coursesIndex)
+      }
+    }
+    return courses
+  }
 /*-------------------------------------------------------
  CUANDO DAN CLICK AL BOTON DEL COHORT GUARDAMOS
  LA INFORMACION DEL COHORT DENTRO UN NUEVO ARREGLO
@@ -166,6 +178,7 @@ let loadUsersProgress = idCohort => {
   while (cohortGrid.firstChild) {
     cohortGrid.removeChild(cohortGrid.firstChild)
   }
+
 
   // GUARDAMOS EL ID Y LO SEPARAMOS DE TODA LA DATA DE COHORT
   computeCourses(idCohort)
@@ -214,9 +227,10 @@ let showUsersProgress = array => {
 
   displayShowHide(searcharea[0], 'show')
   displayShowHide(usersArea, 'show')
-
   array.map(user => {
     //CREAMOS UN DIV PARA EL USUARIO DENTRO DEL DIV CORRESPONDIENTE
+
+    
     div = document.createElement('div')
     div.className = 'user'
 
@@ -230,7 +244,7 @@ let showUsersProgress = array => {
     divExercises.innerHTML = user.stats.exercises.percent
 
     divQuizzes = document.createElement('div')
-    divQuizzes.innerHTML = user.stats.quizes.percent
+    divQuizzes.innerHTML = user.stats.quizzes.percent
 
     divTotal = document.createElement('div')
     divTotal.innerHTML = user.stats.percent
