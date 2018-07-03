@@ -56,9 +56,7 @@ window.computeUsersStats = (users, progress, courses) => {
     //PORCENTAJE TOTAL
     if (getPercent.length > 0) {
       percentUser = Math.round(
-        getPercent.reduce((a, b) => {
-          return a + b
-        }) / getPercent.length
+        getPercent.reduce((a,b)=> a+b,0) / getPercent.length
       )
     } else {
       percentUser = 0
@@ -126,10 +124,11 @@ window.computeUsersStats = (users, progress, courses) => {
 window.sortUsers = (users, orderBy, orderDirection) => {
   let userOrderForTest = []
 
+//agregando name
   if (orderBy === 'name' ) {
     userOrderForTest = users.sort((a, b) => {
-      x = a.name
-      y = b.name
+      let x = a.name.toUpperCase()
+      let y = b.name.toUpperCase()
 
       return x < y ? -1 : x > y ? 1 : 0
     })
@@ -139,6 +138,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     }
   }
 
+//agregando percent
   if (orderBy === 'percent') {
     userOrderForTest = users.sort((a, b) => a.stats.percent - b.stats.percent)
     if (orderDirection === 'DESC') {
@@ -146,6 +146,15 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     }
   }
 
+  //agregando completed de excercises
+  if (orderBy === 'cExercises') {
+    userOrderForTest = users.sort((a, b) => a.stats.exercises.completed - b.stats.exercises.completed)
+    if (orderDirection === 'DESC') {
+      userOrderForTest = users.reverse()
+    }
+  }
+
+  //agregando percent de exercises
   if (orderBy === 'pExercises') {
     userOrderForTest = users.sort((a, b) => a.stats.exercises.percent - b.stats.exercises.percent)
     if (orderDirection === 'DESC') {
@@ -153,6 +162,31 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     }
   }
 
+  //agregando completed de READS
+  if (orderBy === 'cReads') {
+    userOrderForTest = users.sort((a, b) => a.stats.reads.completed - b.stats.reads.completed)
+    if (orderDirection === 'DESC') {
+      userOrderForTest = users.reverse()
+    }
+  }
+
+  //agregando percent de READS 
+  if (orderBy === 'pReads') {
+    userOrderForTest = users.sort((a, b) => a.stats.reads.percent - b.stats.reads.percent)
+    if (orderDirection === 'DESC') {
+      userOrderForTest = users.reverse()
+    }
+  }
+
+  //agregando completed de QUIZZES
+  if (orderBy === 'cquizes') {
+    userOrderForTest = users.sort((a, b) => a.stats.quizzes.completed - b.stats.quizzes.completed)
+    if (orderDirection === 'DESC') {
+      userOrderForTest = users.reverse()
+    }
+  }
+
+  // agregando percent de QUIZZES
   if (orderBy === 'pquizes') {
     userOrderForTest = users.sort((a, b) => a.stats.quizzes.percent - b.stats.quizzes.percent)
     if (orderDirection === 'DESC') {
@@ -160,6 +194,15 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     }
   }
 
+  // agregando scoreSum de QUIZZES
+  if (orderBy === 'pquizesssum') {
+    userOrderForTest = users.sort((a, b) => a.stats.quizzes.scoreSum - b.stats.quizzes.scoreSum)
+    if (orderDirection === 'DESC') {
+      userOrderForTest = users.reverse()
+    }
+  }
+
+  // agregando scoreAvg de QUIZZES
   if (orderBy === 'pquizesavg') {
     userOrderForTest = users.sort((a, b) => a.stats.quizzes.scoreAvg - b.stats.quizzes.scoreAvg)
     if (orderDirection === 'DESC') {
@@ -167,18 +210,13 @@ window.sortUsers = (users, orderBy, orderDirection) => {
     }
   }
 
-  if (orderBy === 'pReads') {
-    userOrderForTest = users.sort((a, b) => a.stats.reads.percent - b.stats.reads.percent)
-    if (orderDirection === 'DESC') {
-      userOrderForTest = users.reverse()
-    }
-  }
+
   return userOrderForTest
 }
 
 //TERCERA FUNCIÓN
 window.filterUsers = (users, search) => {
-  filterNameArray = []
+  let filterNameArray = []
 
   users.filter(
     x => (x.name.toUpperCase().includes(search) ? filterNameArray.push(x) : 0)
@@ -188,7 +226,7 @@ window.filterUsers = (users, search) => {
 
 //CUARTA FUNCIÓN
 window.processCohortData = options => {
-  usersWithStats = computeUsersStats(
+  let usersWithStats = computeUsersStats(
     options.cohortData.users,
     options.cohortData.progress,
     options.cohort
